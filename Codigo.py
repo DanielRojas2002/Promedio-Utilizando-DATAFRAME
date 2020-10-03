@@ -153,3 +153,8 @@ while opcion==1:
     Promedio(lista_de_listas,materias)
     print("1=SI\n2=NO")
     opcion=int(input("Quieres seguir con el programa : "))
+
+
+dic=pd.DataFrame(diccionario)
+dic.index=[listanombre]
+print(dic)

@@ -99,3 +99,57 @@ def Promedio(lista_de_listas,materias):
             plt.title("PROMEDIO")       
             plt.bar(texto,height=valores,color=colores,width=0.5)
             plt.show()
+
+
+diccionario={}
+opcion=1
+listanombre=[]
+notas=[]
+contador=1
+while opcion==1:
+    separador=("*"*40)
+    lista_de_listas=[]
+    contadorMate=0
+    contadorA=0
+    listadelistas=[]
+    print("*"*20,"Menu Principal","*"*20)
+    alumnos=int(input("Cuantos alumnos son : "))
+    materias=int(input("Cuantas Materias llevan : "))
+    print(separador)
+    for alumno in range(alumnos):
+        contadorA+=1
+        nombre=input("Nombre del Alumno: ")
+        listanombre.append(nombre)
+        listaNota=[]
+        lista_de_listas.append(listaNota)
+        contadorMate=0
+        for materia in range(materias):
+            contadorMate+=1
+            nota=int(input(f"Calificacion {contadorMate} : "))
+            print(separador)
+            notas.append(nota)
+            listaNota.append(nota)
+            
+           
+    indice=0
+    if alumnos==materias:
+        for alumno in range (materias):
+            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            contador=contador+1
+            indice=indice+1
+            
+    elif alumnos<materias:
+        for alumno in range (materias):
+            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            contador=contador+1
+            indice=indice+1
+        
+    elif alumnos>materias:
+        for alumno in range (materias):
+            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            contador=contador+1
+            indice=indice+1
+        
+    Promedio(lista_de_listas,materias)
+    print("1=SI\n2=NO")
+    opcion=int(input("Quieres seguir con el programa : "))

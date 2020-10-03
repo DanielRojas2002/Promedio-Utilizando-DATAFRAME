@@ -1,4 +1,6 @@
 # Promedio-Utilizando-
+
+
 Tipo: Apoyo Maestros
 Este codigo te pregunta cuantos alumnos tines y cuantas materias tienes 
 despues te pregunta las calificaciones de tus alumnos 

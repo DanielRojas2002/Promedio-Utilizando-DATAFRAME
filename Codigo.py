@@ -158,3 +158,11 @@ while opcion==1:
 dic=pd.DataFrame(diccionario)
 dic.index=[listanombre]
 print(dic)
+
+
+print("*"*30)
+print("1=SI\n2=NO")
+opcion2=int(input("Quieres que los anteriores Datos se te agreguen a un Excel\n: "))
+if opcion2==1:
+    dic.to_csv(r'Calificaciones.csv',index=True,header=True)
+    print("Ya estan agregados a un Excel")

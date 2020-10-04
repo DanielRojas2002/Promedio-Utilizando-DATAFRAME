@@ -115,9 +115,10 @@ while opcion==1:
     print("*"*20,"Menu Principal","*"*20)
     alumnos=int(input("Cuantos alumnos son : "))
     materias=int(input("Cuantas Materias llevan : "))
-    print(separador)
     for alumno in range(alumnos):
+        print(separador)
         contadorA+=1
+        print(f"Alumno {contadorA}:")
         nombre=input("Nombre del Alumno: ")
         listanombre.append(nombre)
         listaNota=[]
@@ -126,7 +127,6 @@ while opcion==1:
         for materia in range(materias):
             contadorMate+=1
             nota=int(input(f"Calificacion {contadorMate} : "))
-            print(separador)
             notas.append(nota)
             listaNota.append(nota)
             
@@ -134,25 +134,26 @@ while opcion==1:
     indice=0
     if alumnos==materias:
         for alumno in range (materias):
-            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            diccionario[f"Calificacion {contador}"]=notas[indice::materias]
             contador=contador+1
             indice=indice+1
             
     elif alumnos<materias:
         for alumno in range (materias):
-            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            diccionario[f"Calificacion {contador}"]=notas[indice::materias]
             contador=contador+1
             indice=indice+1
         
     elif alumnos>materias:
         for alumno in range (materias):
-            diccionario[f"Calificacion{contador}"]=notas[indice::materias]
+            diccionario[f"Calificacion {contador}"]=notas[indice::materias]
             contador=contador+1
             indice=indice+1
         
     Promedio(lista_de_listas,materias)
     print("1=SI\n2=NO")
     opcion=int(input("Quieres seguir con el programa : "))
+    print(separador)
 
 
 dic=pd.DataFrame(diccionario)
@@ -166,3 +167,4 @@ opcion2=int(input("Quieres que los anteriores Datos se te agreguen a un Excel\n:
 if opcion2==1:
     dic.to_csv(r'Calificaciones.csv',index=True,header=True)
     print("Ya estan agregados a un Excel")
+    print("Checa tu carpeta donde guardaste este codigo :)")

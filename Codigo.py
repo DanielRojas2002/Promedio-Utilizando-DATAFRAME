@@ -169,3 +169,61 @@ if opcion2==1:
     dic.to_csv(r'Calificaciones.csv',index=True,header=True)
     print("Ya estan agregados a un Excel")
     print("Checa tu carpeta donde guardaste este codigo :)")
+
+print(separador)
+print("1=SI\n2=NO")
+minimenu=int(input("Quieres realizar una operacion con los datos antes dados; "))
+while minimenu==1:
+    print("*"*30,"BIENVENIDO","*"*30)
+    print("*"*30,"MENU","*"*30)
+    print("1=Nota Minima\n2=NotaMaxima")
+    print("3=Cuantas notas tengo\n4=Quiero usar otra formula")
+    opcion=int(input(":"))
+    print(separador)
+    if opcion==1:
+        print(dic.min())
+        print(separador)
+        print("1=SI\n2=NO")
+        minimenu=int(input("Quiere seguir con  la ejecucion : "))
+        print(separador)
+    elif opcion==2:
+        print(dic.max())
+        print(separador)
+        print("1=SI\n2=NO")
+        minimenu=int(input("Quiere seguir con  la ejecucion : "))
+        print(separador)
+    elif opcion==3:
+        print(dic.count())
+        print(separador)
+        print("1=SI\n2=NO")
+        minimenu=int(input("Quiere seguir con  la ejecucion: "))
+        print(separador)
+        
+    elif opcion==4:
+        print(separador)
+        print("1=Quiero checar las calificaciones de un alumno en especifico\n2=Quiero sacar una condicion de las calificaciones")
+        submenu=int(input(":"))
+        if submenu==1:
+            alumno=input("Ingrese el nombre del Alumno : ")
+            print(separador)
+            print(dic.loc[alumno])
+            print(separador)
+            print("1=SI\n2=NO")
+            minimenu=int(input("Quiere seguir con  la ejecucion : "))
+            print(separador)
+        
+        elif submenu==2:
+            print(separador)
+            print("1=Mayor a\n2=Menor a\n3=Igual a\n4=Diferente a ")
+            print(separador)
+            operacion=int(input("Que operador quieres sacar : "))
+            if operacion==1:
+                print(separador)
+                mayor=int(input("Mayor a que : "))
+                alumno=input("Que alumno : ")
+                mayora=(dic.loc[alumno][dic>mayor])
+                print(separador)
+                print(mayora)
+                print(separador)
+                minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                print(separador)

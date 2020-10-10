@@ -130,7 +130,11 @@ while opcion==1:
             notas.append(nota)
             listaNota.append(nota)
             
-           
+    Promedio(lista_de_listas,materias)
+    print("1=SI\n2=NO")
+    opcion=int(input("Quieres seguir con el programa : "))
+    print(separador)
+
     indice=0
     if alumnos==materias:
         for alumno in range (materias):
@@ -150,10 +154,7 @@ while opcion==1:
             contador=contador+1
             indice=indice+1
         
-    Promedio(lista_de_listas,materias)
-    print("1=SI\n2=NO")
-    opcion=int(input("Quieres seguir con el programa : "))
-    print(separador)
+
 
 
 dic=pd.DataFrame(diccionario)

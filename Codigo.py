@@ -131,8 +131,7 @@ while opcion==1:
             listaNota.append(nota)
             
     Promedio(lista_de_listas,materias)
-    print("1=SI\n2=NO")
-    opcion=int(input("Quieres seguir con el programa : "))
+    opcion=2
     print(separador)
 
     indice=0
@@ -225,5 +224,46 @@ while minimenu==1:
                 print(separador)
                 print(mayora)
                 print(separador)
+                print("1=SI\n2=NO")
                 minimenu=int(input("Quiere seguir con  la ejecucion : "))
                 print(separador)
+            
+            elif operacion==2:
+                print(separador)
+                menor=int(input("Menor a que : "))
+                alumno=input("Que alumno : ")
+                menora=(dic.loc[alumno][dic<menor])
+                print(separador)
+                print(menora)
+                print(separador)
+                print("1=SI\n2=NO")
+                minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                print(separador)
+            
+
+            elif operacion==3:
+                print(separador)
+                igual=int(input("Igual a que : "))
+                alumno=input("Que alumno : ")
+                iguala=(dic.loc[alumno][dic==igual])
+                print(separador)
+                print(iguala)
+                print(separador)
+                print("1=SI\n2=NO")
+                minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                print(separador)
+
+            elif operacion==4:
+                print(separador)
+                diferente=int(input("Diferente a que : "))
+                alumno=input("Que alumno : ")
+                diferentea=(dic.loc[alumno][dic!=diferente])
+                print(separador)
+                print(diferentea)
+                print(separador)
+                print("1=SI\n2=NO")
+                minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                print(separador)
+                
+print("Fin del Programa")
+            

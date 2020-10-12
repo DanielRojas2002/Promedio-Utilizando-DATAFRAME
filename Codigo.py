@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import sys
 
 def Promedio(lista_de_listas,materias):
     listapromedio=[]
@@ -101,8 +102,167 @@ def Promedio(lista_de_listas,materias):
             plt.show()
 
 
-
+diccionario={}
+opcion=1
+listanombre=[]
+notas=[]
+contador=1
+try:
+    while opcion==1:
+        separador=("*"*40)
+        lista_de_listas=[]
+        contadorMate=0
+        contadorA=0
+        listadelistas=[]
+        print("*"*20,"Menu Principal","*"*20)
+        alumnos=int(input("Cuantos alumnos son : "))
+        materias=int(input("Cuantas Materias llevan : "))
+        for alumno in range(alumnos):
+            contadorA+=1
+            print(separador)
+            print(f"Alumno {contadorA}")
+            nombre=(input("Nombre del Alumno: "))
+            listanombre.append(nombre)
+            listaNota=[]
+            lista_de_listas.append(listaNota)
+            contadorMate=0
+            for materia in range(materias):
+                contadorMate+=1
+                nota=int(input(f"Calificacion {contadorMate} : "))
+                notas.append(nota)
+                listaNota.append(nota)
+    
+        Promedio(lista_de_listas,materias)
+        opcion=2
+        print(separador)
+    
+        indice=0
+        if alumnos==materias:
+            for alumno in range (materias):
+                diccionario[f"Calificacion {contador}"]=notas[indice::materias]
+                contador=contador+1
+                indice=indice+1
+            
+        elif alumnos<materias:
+            for alumno in range (materias):
+                diccionario[f"Calificacion {contador}"]=notas[indice::materias]
+                contador=contador+1
+                indice=indice+1
         
+        elif alumnos>materias:
+            for alumno in range (materias):
+                diccionario[f"Calificacion {contador}"]=notas[indice::materias]
+                contador=contador+1
+                indice=indice+1
+              
+    dic=pd.DataFrame(diccionario)
+    dic.index=[listanombre]
+    print(dic)
+    
+    print("*"*30)
+    print("1=SI\n2=NO")
+    opcion2=int(input("Quieres que los anteriores Datos se te agreguen a un Excel\n: "))
+    if opcion2==1:
+        dic.to_csv(r'Calificaciones.csv',index=True,header=True)
+        print("Ya estan agregados a un Excel")
+        print("Checa en tu carpeta donde guardaste este codigo :)")
+    
+    print(separador)
+    print("1=SI\n2=NO")
+    minimenu=int(input("Quieres realizar una operacion con los datos antes dados; "))
+    while minimenu==1:
+        print("*"*30,"BIENVENIDO","*"*30)
+        print("*"*30,"MENU","*"*30)
+        print("1=Nota Minima\n2=NotaMaxima")
+        print("3=Cuantas notas tengo\n4=Quiero usar otra formula")
+        opcion=int(input(":"))
+        print(separador)
+        alumno=input("De que Alumno:")
+        if opcion==1:
+            print(dic.min())
+            print("1=SI\n2=NO")
+            minimenu=int(input("Quiere salir de la ejecucion : "))
+            print(separador)
+             
+        elif opcion==2:
+            print(dic.max())
+            print("1=SI\n2=NO")
+            minimenu=int(input("Quiere salir de la ejecucion : "))
+            print(separador)
+             
+        elif opcion==3:
+            print(dic.count())
+            print("1=SI\n2=NO")
+            minimenu=int(input("Quiere salir de la ejecucion : "))
+            print(separador)
+        
+        elif opcion==4:
+            print(separador)
+            print("1=Quiero checar las calificaciones de un alumno en especifico\n2=Quiero sacar una condicion de las calificaciones")
+            submenu=int(input(":"))
+            if submenu==1:
+                alumno=input("Ingrese el nombre del Alumno : ")
+                print(dic.loc[alumno])
+                print("1=SI\n2=NO")
+                minimenu=int(input("Quiere salir de la ejecucion : "))
+                print(separador)
+        
+            elif submenu==2:
+                print("1=Mayor a\n2=Menor a\n3=Igual a\n4=Diferente a ")
+                operacion=int(input("Que operador quieres sacar : "))
+                if operacion==1:
+                    print(separador)
+                    mayor=int(input("Mayor a que : "))
+                    alumno=input("Que alumno : ")
+                    mayora=(dic.loc[alumno][dic>mayor])
+                    print(mayora)
+                    minimenu=int(input("Quiere salir de la ejecucion : "))
+                    print(separador)
+                 
+                elif operacion==2:
+                    print(separador)
+                    menor=int(input("Menor a que : "))
+                    alumno=input("Que alumno : ")
+                    menora=(dic.loc[alumno][dic<menor])
+                    print(separador)
+                    print(menora)
+                    print(separador)
+                    print("1=SI\n2=NO")
+                    minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                    print(separador)
+                
+                elif operacion==3:
+                    print(separador)
+                    igual=int(input("Igual a que : "))
+                    alumno=input("Que alumno : ")
+                    iguala=(dic.loc[alumno][dic==igual])
+                    print(separador)
+                    print(iguala)
+                    print(separador)
+                    print("1=SI\n2=NO")
+                    minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                    print(separador)
+
+                elif operacion==4:
+                    print(separador)
+                    diferente=int(input("Diferente a que : "))
+                    alumno=input("Que alumno : ")
+                    diferentea=(dic.loc[alumno][dic!=diferente])
+                    print(separador)
+                    print(diferentea)
+                    print(separador)
+                    print("1=SI\n2=NO")
+                    minimenu=int(input("Quiere seguir con  la ejecucion : "))
+                    print(separador)
+except:
+    print("*"*30)
+    print(f"Ocurrió un problema {sys.exc_info()[0]}")
+    print("Intenta respetar lo que se te pide :) ")
+    print("*"*30)
+    
+finally:
+    print("FIN DEL CODIGO ...")
+    print("*"*30)       
 
 
 

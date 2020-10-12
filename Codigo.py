@@ -257,6 +257,7 @@ try:
 except:
     print("*"*30)
     print(f"Ocurrió un problema {sys.exc_info()[0]}")
+    print(f"Ocurrió un problema {sys.exc_info()[1]}")
     print("Intenta respetar lo que se te pide :) ")
     print("*"*30)
     
